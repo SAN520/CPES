@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.atguigu.crowdfunding.cpes.dao.PermissionDao">
+
+    <select id="queryAll" resultType="permission">
+        select
+            *
+        from t_permission
+    </select>
+	<insert id="insert">
+		insert into t_permission(
+			name,url,icon,pid,seqno
+		) values (
+			#{permission.name},#{permission.url},#{permission.icon},#{permission.pid},#{permission.seqno}
+		)
+	</insert>
+	<delete id="delete">
+		delete from t_permission
+		where id=#{id}
+	</delete>
+	<select id="getPermission" resultType="permission">
+		select * 
+		from t_permission
+		where id=#{id}
+	</select>
+	<update id="update">
+		update t_permission 
+		set name=#{permission.name},url=#{permission.url},icon=#{permission.icon},seqno=#{permission.seqno}
+		where id=#{permission.id}
+	</update>
+</mapper>
